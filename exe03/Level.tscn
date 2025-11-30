@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyr8atgynb2cc"]
+
+[ext_resource type="Script" uid="uid://c3bfep0jngob" path="res://player.gd" id="1_bexhn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t7iv1"]
+size = Vector2(10, 10)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2nifc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wkftn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4iis"]
+
+[node name="Level" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5832616)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_t7iv1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_2nifc")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7885482, 0)
+script = ExtResource("1_bexhn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("BoxMesh_wkftn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_q4iis")
+debug_color = Color(0.40784314, 0.46666667, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.9171992, 0.39842892, 0, -0.39842892, 0.9171992, 0, 1.4412282, 4.1134815)

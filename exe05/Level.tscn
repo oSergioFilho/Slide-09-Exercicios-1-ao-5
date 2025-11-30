@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbn0273mfk84n"]
+
+[ext_resource type="Script" uid="uid://d36vflr8d4t17" path="res://Player.gd" id="1_bexhn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bexhn"]
+albedo_color = Color(0.649203, 0.28680557, 0.19038436, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t7iv1"]
+material = SubResource("StandardMaterial3D_bexhn")
+size = Vector2(5, 5)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2nifc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7iv1"]
+albedo_color = Color(1, 0.45490196, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wkftn"]
+material = SubResource("StandardMaterial3D_t7iv1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4iis"]
+
+[node name="Level" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.83997995, 0.5426175, 0, -0.5426175, 0.83997995, 0, 1.3030152, 2.1071916)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_t7iv1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_2nifc")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_bexhn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51922405, 0)
+mesh = SubResource("BoxMesh_wkftn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_q4iis")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.9528735, 0.30336794, 0, -0.30336794, 0.9528735, 0, 1.5513961, 2.3960009)
+current = true

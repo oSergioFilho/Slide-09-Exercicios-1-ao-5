@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfexkhpfcmh88"]
+
+[ext_resource type="Script" uid="uid://btlcmuij760jx" path="res://Level.gd" id="1_bexhn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t7iv1"]
+size = Vector2(10, 10)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2nifc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wkftn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4iis"]
+albedo_color = Color(0.45490196, 0.8666667, 1, 1)
+metallic = 0.5
+roughness = 0.5
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_bexhn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5582905)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_t7iv1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_2nifc")
+
+[node name="Target" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6190196, 0)
+mesh = SubResource("BoxMesh_wkftn")
+surface_material_override/0 = SubResource("StandardMaterial3D_q4iis")
+
+[node name="DynamicLight" type="SpotLight3D" parent="."]
+transform = Transform3D(0.9973413, 0, 0.07287266, 0, 1, 0, -0.07287266, 0, 0.9973413, 0.08850837, 0.6305547, 2.1050124)
+light_energy = 3.845
+spot_angle = 67.701385
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.92788833, 0.37285823, 0, -0.37285823, 0.92788833, 0, 2.057712, 3.4133992)
