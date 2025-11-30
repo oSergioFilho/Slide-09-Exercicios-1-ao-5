@@ -1,14 +1,10 @@
 Exercício 1:
-exe01.png
-
+![Exe01](exe01.png)
 Exercício 2:
-exe02.png
-
+![Exe02](exe02.png)
 Exercício 3:
-exe03.png
-
+![Exe03](exe03.png)
 Exercício 4:
-exe04.png
-
+![Exe04](exe04-a.png)
 Exercício 5:
-exe05.png
+![Exe05](exe05.png)
